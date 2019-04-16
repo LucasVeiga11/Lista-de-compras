@@ -58,7 +58,7 @@ public class MainActivity extends AppCompatActivity {
                 final Lista notaSelecionada = lista.get(position);
                 Intent intent = new Intent(
 
-                          MainActivity.this, FormularioActivity.class);
+                          MainActivity.this, MostarItens.class);
                 intent.putExtra("EXTRA_SESSION_ID", notaSelecionada.getId());
                          startActivity(intent);
             }
