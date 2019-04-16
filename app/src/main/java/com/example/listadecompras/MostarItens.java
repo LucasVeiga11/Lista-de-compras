@@ -19,7 +19,7 @@ public class MostarItens extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.mostraritenss);
         final int sessionId= getIntent().getIntExtra("EXTRA_SESSION_ID",0);
-        lvIten = (ListView) findViewById(R.id.lvLista);
+        lvIten = (ListView) findViewById(R.id.lvItens);
         FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
 
         fab.setOnClickListener(new View.OnClickListener() {
@@ -50,6 +50,7 @@ public class MostarItens extends AppCompatActivity {
         adapter = new AdapterItens(this, itens);
         lvIten.setAdapter(adapter);
     }
+
     @Override
     protected void onResume() {
         super.onResume();

@@ -15,7 +15,7 @@ public class AdapterItens extends BaseAdapter {
     private List<Itens> itens;
     private LayoutInflater inflater;
 
-    public AdapterItens(Context context, List<Itens> lista){
+    public AdapterItens(Context context, List<Itens> itens){
         this.context = context;
         this.itens = itens;
         this.inflater = LayoutInflater.from(context);
@@ -50,7 +50,7 @@ public class AdapterItens extends BaseAdapter {
                     convertView.findViewById(R.id.tvItemTitulo);
             item.tvQuantidade = (TextView)
                     convertView.findViewById(R.id.tvQuantidade);
-            item.tvQuantidade = (TextView)
+            item.tvPreco = (TextView)
                     convertView.findViewById(R.id.tvPreco);
 
             convertView.setTag(item);

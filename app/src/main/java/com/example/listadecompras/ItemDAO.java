@@ -14,6 +14,8 @@ public class ItemDAO {
 
         Banco banco = new Banco (context);
         ContentValues valores = new ContentValues();
+
+        valores.put("id_lista", iten.getId_lista());
         valores.put("titulo", iten.getTitulo() );
         valores.put("preco", iten.getPreco() );
         valores.put("quantidade", iten.getQuantidade() );
@@ -25,7 +27,7 @@ public class ItemDAO {
         List<Itens> listar = new ArrayList<>();
         Banco banco = new Banco(context);
         SQLiteDatabase db = banco.getReadableDatabase();
-        String sql = "SELECT * FROM itens WHERE id_lista = "+idLista +"ORDER BY id DESC";
+        String sql = "SELECT * FROM itens WHERE id_lista = '"+idLista +"'ORDER BY id DESC";
         Cursor cursor = db.rawQuery(sql, null);
         if(cursor.getCount() > 0){
             cursor.moveToFirst();
