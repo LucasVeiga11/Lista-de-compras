@@ -35,12 +35,36 @@ public class MainActivity extends AppCompatActivity {
 
 
         FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
+
+        fab.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent i = new Intent(getApplicationContext(), PopupLista.class);
+                startActivity(i);
+            }
+        });
+        /*
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 salvar();
             }
         });
+
+*/
+        lvLista.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                final Lista notaSelecionada = lista.get(position);
+                Intent intent = new Intent(
+
+                          MainActivity.this, FormularioActivity.class);
+                intent.putExtra("EXTRA_SESSION_ID", notaSelecionada.getId());
+                         startActivity(intent);
+            }
+            }
+        );
+
         /*
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
