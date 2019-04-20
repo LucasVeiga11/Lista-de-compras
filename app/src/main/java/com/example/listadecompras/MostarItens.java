@@ -1,5 +1,6 @@
 package com.example.listadecompras;
 
+import android.content.Intent;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -26,7 +27,12 @@ public class MostarItens extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
-            salvar(sessionId);
+                Intent i = new Intent(
+                        getApplicationContext(), PopupItem.class
+                );
+                i.putExtra("EXTRA_SESSION_ID", sessionId);
+                startActivity(i);
+
 
             }
         });

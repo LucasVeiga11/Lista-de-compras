@@ -7,17 +7,25 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 
-public class PopupLista extends AppCompatActivity {
-    private EditText etTitulo;
+public class PopupItem extends AppCompatActivity {
+
+    private EditText etNumero;
+    private EditText etNome;
+    private EditText etQuantidade;
     private Button btnSalvar;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_popup_lista);
+        setContentView(R.layout.activity_popup_item);
+
+        final int sessionId= getIntent().getIntExtra("EXTRA_SESSION_ID",0);
+
+        etNumero = (EditText) findViewById(R.id.etNumero);
+        etNome = (EditText) findViewById(R.id.etNome);
+        etQuantidade = (EditText) findViewById(R.id.etQuantidade);
 
 
-
-        etTitulo = (EditText) findViewById(R.id.etTitulo);
         btnSalvar = (Button) findViewById(R.id.btnSalvar);
 
         DisplayMetrics dm = new DisplayMetrics();
@@ -29,24 +37,17 @@ public class PopupLista extends AppCompatActivity {
         btnSalvar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                salvar();
+                salvar(sessionId);
             }
         });
-
     }
-    private void salvar(){
-        Lista nota = new Lista();
-        nota.setTitulo( etTitulo.getText().toString() );
-        ListaDAO.inserir(nota, this);
+    private void salvar(int sessionid){
+        Itens nota = new Itens();
+        nota.setTitulo( etNome.getText().toString() );
+        nota.setPreco(Double.parseDouble(etNumero.getText().toString()));
+        nota.setQuantidade( Integer.parseInt( etQuantidade.getText().toString() ));
+        nota.setId_lista(sessionid);
+        ItemDAO.inserir(nota, this);
         this.finish();
     }
-    /*
-    private void salvar(){
-        Anotacao nota = new Anotacao();
-        nota.setTexto( etTexto.getText().toString() );
-        nota.setTitulo( etTitulo.getText().toString() );
-        AnotacaoDAO.inserir(nota, this);
-        this.finish();
-    }
-    */
 }

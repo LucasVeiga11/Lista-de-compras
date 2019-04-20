@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".PopupLista">
+    tools:context=".PopupItem">
 
     <TextView
         android:id="@+id/textView"
@@ -24,7 +24,7 @@
         android:layout_width="214dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="3dp"
-        android:layout_marginTop="60dp"
+        android:layout_marginTop="20dp"
         android:layout_marginEnd="8dp"
         android:ems="10"
         android:hint="Digite aqui o título"
@@ -40,7 +40,7 @@
         android:layout_width="145dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
-        android:layout_marginTop="60dp"
+        android:layout_marginTop="20dp"
         android:layout_marginEnd="8dp"
         android:text="Salvar"
         app:layout_constraintEnd_toEndOf="parent"
