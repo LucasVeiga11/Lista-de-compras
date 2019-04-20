@@ -1,10 +1,13 @@
 package com.example.listadecompras;
 
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.support.design.widget.FloatingActionButton;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ListView;
 
 import java.util.List;
@@ -19,7 +22,7 @@ public class MostarItens extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.mostraritenss);
-        final int sessionId= getIntent().getIntExtra("EXTRA_SESSION_ID",0);
+        final int sessionId = getIntent().getIntExtra("EXTRA_SESSION_ID", 0);
         lvIten = (ListView) findViewById(R.id.lvItens);
         FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
 
@@ -37,8 +40,32 @@ public class MostarItens extends AppCompatActivity {
             }
         });
 
-    }
+        lvIten.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
+            @Override
+            public boolean onItemLongClick(AdapterView<?> parent, View view, int position, long id) {
+                final Itens ItenSelecionado = itens.get(position);
+                AlertDialog.Builder alerta =
+                        new AlertDialog.Builder(MostarItens.this);
+                alerta.setTitle("Excluir Anotação...");
+                alerta.setMessage("Confirma a exclusão da anotação " +
+                        ItenSelecionado.getTitulo() + "?");
+                alerta.setPositiveButton("sim", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        ItemDAO.excluir(ItenSelecionado.getId(), MostarItens.this);
+                        carregarLista(sessionId);
 
+                    }
+                });
+                alerta.setNeutralButton("Cancelar", null);
+                alerta.show();
+
+                return true;
+            }
+        });
+
+
+    }
     private void salvar(int idlista){
         Itens nota = new Itens();
         nota.setTitulo( "teste item" );
@@ -64,3 +91,4 @@ public class MostarItens extends AppCompatActivity {
         carregarLista(sessionId);
     }
 }
+

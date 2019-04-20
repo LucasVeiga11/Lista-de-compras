@@ -22,6 +22,7 @@ public class ListaDAO {
         Banco banco = new Banco(context);
         SQLiteDatabase db = banco.getWritableDatabase();
         db.delete("listas", "id = "+idLista, null);
+        db.delete("itens","id_lista = "+idLista, null);
     }
 
 
@@ -43,4 +44,5 @@ public class ListaDAO {
 
         return listar;
         }
+
 }

@@ -78,6 +78,37 @@ public class MainActivity extends AppCompatActivity {
 
 */
 
+        lvLista.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
+            @Override
+            public boolean onItemLongClick(AdapterView<?> parent, View view, final int position, long id) {
+
+                final Lista notaSelecionada = lista.get(position);
+                AlertDialog.Builder alerta =
+                        new AlertDialog.Builder(MainActivity.this);
+                alerta.setTitle("Excluir Anotação...");
+                alerta.setMessage("Confirma a exclusão da anotação " +
+                        notaSelecionada.getTitulo() + "?");
+                alerta.setPositiveButton("Sim", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        ListaDAO.excluir(notaSelecionada.getId(),
+                                MainActivity.this);
+                        carregarLista();
+
+                        //     lista.remove( position);
+                        //     adapter.notifyDataSetChanged();
+
+                    }
+                });
+                alerta.setNeutralButton("Cancelar", null);
+                alerta.show();
+
+
+
+                return true;
+            }
+        });
+
     }
 
     private void salvar(){

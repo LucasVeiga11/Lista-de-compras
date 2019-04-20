@@ -43,4 +43,11 @@ public class ItemDAO {
 
         return listar;
     }
+
+    public static final void excluir(int idItem, Context context){
+        Banco banco = new Banco(context);
+        SQLiteDatabase db = banco.getWritableDatabase();
+        db.delete("itens", "id = "+idItem, null);
+
+    }
 }
