@@ -4,7 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="100dp"
     android:orientation="vertical"
-    android:background="#ddd"
+
     >
 
 
@@ -26,21 +26,23 @@
         android:hint="Texto da Anotação"
         android:textSize="30dp"
         android:id="@+id/tvItemTitulo"/>
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="10dp"
-        android:textSize="20dp"
-        android:hint="quantidade"
-        android:id="@+id/tvQuantidade"/>
+
+        <TextView
+            android:id="@+id/tvQuantidade"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:hint="quantidade"
+            android:textSize="20dp" />
     </LinearLayout>
+
     <TextView
-        android:layout_width="match_parent"
+        android:id="@+id/tvPreco"
+        android:layout_width="384dp"
         android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal|left"
         android:hint="Preço"
-        android:textSize="15dp"
-        android:id="@+id/tvPreco"/>
+        android:textSize="15dp" />
 
 
 
